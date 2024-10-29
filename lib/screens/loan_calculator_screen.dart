@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class LoanCalculatorScreen extends StatefulWidget {
-  final double price;
+  final double priceInBs;
   final String productName;
 
-  LoanCalculatorScreen({required this.price, required this.productName});
+  LoanCalculatorScreen({required this.priceInBs, required this.productName});
 
   @override
   _LoanCalculatorScreenState createState() => _LoanCalculatorScreenState();
@@ -20,13 +20,13 @@ class _LoanCalculatorScreenState extends State<LoanCalculatorScreen> {
   void calculateTotal() {
     double initialPayment = double.parse(_initialPaymentController.text);
     int numOfPayments = int.parse(_numOfPaymentsController.text);
-    double financedAmount = widget.price - initialPayment;
+    double financedAmount = widget.priceInBs - initialPayment;
 
-    double interestRate = getInterestRate(initialPayment, widget.price, numOfPayments);
+    double interestRate = getInterestRate(initialPayment, widget.priceInBs, numOfPayments);
 
     double totalInterest = financedAmount * interestRate;
     double subtotal = financedAmount + totalInterest;
-    double iva = subtotal * 0.13; // IVA del 13%
+    double iva = subtotal * 0.13; 
     totalAmount = subtotal + iva;
     installmentAmount = totalAmount / numOfPayments;
 
@@ -62,6 +62,8 @@ class _LoanCalculatorScreenState extends State<LoanCalculatorScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Calcular Cuotas - ${widget.productName}'),
@@ -73,7 +75,7 @@ class _LoanCalculatorScreenState extends State<LoanCalculatorScreen> {
           child: Column(
             children: [
               Text(
-                'Precio del Producto: Bs ${formatCurrency(widget.price)}',
+                'Precio del Producto: Bs ${formatCurrency(widget.priceInBs)}',
                 style: TextStyle(fontSize: 18),
               ),
               SizedBox(height: 16),
@@ -92,7 +94,7 @@ class _LoanCalculatorScreenState extends State<LoanCalculatorScreen> {
                   if (initialPayment == null) {
                     return 'Ingrese un número válido';
                   }
-                  if (initialPayment <= 0 || initialPayment >= widget.price) {
+                  if (initialPayment <= 0 || initialPayment >= widget.priceInBs) {
                     return 'El pago inicial debe ser mayor que 0 y menor que el precio del producto';
                   }
                   return null;
@@ -128,12 +130,13 @@ class _LoanCalculatorScreenState extends State<LoanCalculatorScreen> {
                 },
                 style: ElevatedButton.styleFrom(
                   padding: EdgeInsets.symmetric(horizontal: 30, vertical: 14),
+                  backgroundColor: colorScheme.primary, 
                 ),
               ),
               SizedBox(height: 24),
               if (totalAmount > 0)
                 Card(
-                  color: Colors.orange[50],
+                  color: Colors.deepPurple[50],
                   elevation: 4,
                   child: Padding(
                     padding: const EdgeInsets.all(16.0),
@@ -142,17 +145,21 @@ class _LoanCalculatorScreenState extends State<LoanCalculatorScreen> {
                       children: [
                         Text(
                           'Monto Total a Pagar: Bs ${formatCurrency(totalAmount)}',
-                          style: TextStyle(fontSize: 18),
+                          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                         ),
-                        SizedBox(height: 8),
+                        Divider(),
                         Text(
                           'IVA (13%): Bs ${formatCurrency(totalAmount * 0.13)}',
-                          style: TextStyle(fontSize: 18),
+                          style: TextStyle(fontSize: 16),
                         ),
                         SizedBox(height: 8),
                         Text(
-                          'Monto por Cuota (${_numOfPaymentsController.text} cuotas): Bs ${formatCurrency(installmentAmount)}',
-                          style: TextStyle(fontSize: 18),
+                          'Monto por Cuota (${_numOfPaymentsController.text} cuotas):',
+                          style: TextStyle(fontSize: 16),
+                        ),
+                        Text(
+                          'Bs ${formatCurrency(installmentAmount)}',
+                          style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: colorScheme.primary),
                         ),
                       ],
                     ),

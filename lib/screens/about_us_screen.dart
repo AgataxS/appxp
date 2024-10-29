@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 class AboutUsScreen extends StatelessWidget {
   final String aboutText = '''
-EcoMercio es una aplicación dedicada a ofrecer los mejores productos electrónicos a precios competitivos. Nuestro objetivo es brindar a nuestros clientes una experiencia de compra excepcional, con atención personalizada y productos de alta calidad.
+Distribol es una empresa líder en distribución de productos electrónicos de alta calidad. Ofrecemos una amplia gama de productos, desde smartphones y laptops hasta accesorios y equipos especializados.
 
-Contamos con una amplia variedad de productos en diferentes categorías para satisfacer todas tus necesidades tecnológicas.
+Nuestra misión es brindar la mejor experiencia de compra a nuestros clientes, con atención personalizada y servicios de valor añadido como asistencia técnica y planes de financiamiento.
 
 ¡Gracias por confiar en nosotros!
 ''';

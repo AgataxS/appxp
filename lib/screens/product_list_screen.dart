@@ -25,9 +25,11 @@ class ProductListScreen extends StatelessWidget {
         itemCount: products.length,
         itemBuilder: (context, index) {
           final product = products[index];
+          final priceInBs = product.priceUSD * 6.96;
+
           return Card(
             elevation: 4,
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
             child: InkWell(
               onTap: () {
                 Navigator.push(
@@ -41,19 +43,25 @@ class ProductListScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Expanded(
-                    child: Image.asset(product.image, fit: BoxFit.cover, width: double.infinity),
+                    child: Image.asset(
+                      product.image,
+                      fit: BoxFit.cover,
+                      width: double.infinity,
+                    ),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
                       product.name,
                       style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
                     child: Text(
-                      'Precio: Bs ${product.price.toStringAsFixed(2)}',
+                      'Precio: \$${product.priceUSD} / Bs ${priceInBs.toStringAsFixed(2)}',
                       style: TextStyle(fontSize: 14, color: Colors.grey[700]),
                     ),
                   ),

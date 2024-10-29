@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'screens/home_screen.dart';
 
 void main() {
@@ -6,16 +7,15 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  // Este widget es la raíz de tu aplicación.
+ 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'EcoMercio App',
+      title: 'Distribol',
       theme: ThemeData(
-        primarySwatch: Colors.orange,
-        colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.orange).copyWith(
-          secondary: Colors.purple,
-        ),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true, 
+        textTheme: GoogleFonts.poppinsTextTheme(),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: HomeScreen(),
