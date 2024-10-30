@@ -8,11 +8,9 @@ class CostCalculatorScreen extends StatefulWidget {
 class _CostCalculatorScreenState extends State<CostCalculatorScreen> {
   final _formKey = GlobalKey<FormState>();
 
-
   final _productCostController = TextEditingController();
   final _shippingCostController = TextEditingController();
   final _advancePaymentController = TextEditingController(text: '0');
-
 
   double totalCostBs = 0.0;
   double taxes = 0.0;
@@ -20,17 +18,13 @@ class _CostCalculatorScreenState extends State<CostCalculatorScreen> {
   double totalToPay = 0.0;
   double balanceDue = 0.0;
 
-
   String selectedCurrency = 'USD';
   String selectedShippingType = 'Otros';
-
 
   List<String> currencies = ['USD', 'AUD', 'Bs', 'CAD', 'EUR', 'GBP'];
   List<String> shippingTypes = ['eBay', 'Amazon', 'Envío Rápido', 'USPS EMS', 'Otros'];
 
-
   double exchangeRate = 6.96;
-
 
   double getExchangeRate() {
     if (selectedCurrency == 'Bs') {
@@ -40,42 +34,28 @@ class _CostCalculatorScreenState extends State<CostCalculatorScreen> {
     }
   }
 
-
   void calculateCosts() {
     double productCost = double.parse(_productCostController.text.replaceAll(',', '.'));
     double shippingCost = double.parse(_shippingCostController.text.replaceAll(',', '.'));
 
-    double totalCostInOriginalCurrency = productCost + shippingCost;
+    double productCostInBs = productCost * getExchangeRate();
+    double shippingCostInBs = shippingCost * getExchangeRate();
 
-    
-    double totalCostInBs = totalCostInOriginalCurrency * getExchangeRate();
+    double companyProfit = productCostInBs * 0.068;
 
+    totalCostBs = productCostInBs + shippingCostInBs + companyProfit;
 
-    double companyProfit = productCost * getExchangeRate() * 0.068;
+    taxes = 0.0;
 
+    distribolService = productCostInBs * 0.068;
 
-    distribolService = productCost * getExchangeRate() * 0.068;
+    totalToPay = totalCostBs + distribolService + taxes;
 
+    balanceDue = totalToPay;
 
-    double taxRate = 0.13 + 0.15; 
-
-   
-    if (selectedCurrency == 'Bs') {
-      taxes = 0.0;
-    } else {
-      taxes = (productCost * getExchangeRate() + companyProfit) * taxRate;
-    }
-
-   
-    totalToPay = totalCostInBs + companyProfit + taxes + distribolService;
-
-    setState(() {
-      totalCostBs = totalCostInBs;
-      balanceDue = totalToPay; 
-    });
+    setState(() {});
   }
 
-  
   void calculateBalanceDue() {
     double advancePayment = double.parse(_advancePaymentController.text.replaceAll(',', '.'));
 
@@ -110,7 +90,6 @@ class _CostCalculatorScreenState extends State<CostCalculatorScreen> {
           key: _formKey,
           child: Column(
             children: [
-             
               DropdownButtonFormField<String>(
                 decoration: InputDecoration(
                   labelText: 'Moneda',
@@ -130,7 +109,6 @@ class _CostCalculatorScreenState extends State<CostCalculatorScreen> {
                 },
               ),
               SizedBox(height: 16),
-           
               DropdownButtonFormField<String>(
                 decoration: InputDecoration(
                   labelText: 'Tipo de Envío',
@@ -150,7 +128,6 @@ class _CostCalculatorScreenState extends State<CostCalculatorScreen> {
                 },
               ),
               SizedBox(height: 16),
-          
               TextFormField(
                 controller: _productCostController,
                 decoration: InputDecoration(
@@ -169,7 +146,6 @@ class _CostCalculatorScreenState extends State<CostCalculatorScreen> {
                 },
               ),
               SizedBox(height: 16),
-
               TextFormField(
                 controller: _shippingCostController,
                 decoration: InputDecoration(
@@ -225,11 +201,6 @@ class _CostCalculatorScreenState extends State<CostCalculatorScreen> {
                               'Costo del Producto y Envío en Bs: ${formatCurrency(totalCostBs)}',
                               style: TextStyle(fontSize: 16),
                             ),
-                            if (taxes > 0)
-                              Text(
-                                'Impuestos: Bs ${formatCurrency(taxes)}',
-                                style: TextStyle(fontSize: 16),
-                              ),
                             Text(
                               'Servicio de Distribol: Bs ${formatCurrency(distribolService)}',
                               style: TextStyle(fontSize: 16),
@@ -273,7 +244,6 @@ class _CostCalculatorScreenState extends State<CostCalculatorScreen> {
                         style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                       ),
                     SizedBox(height: 16),
-                    
                   ],
                 ),
             ],
