@@ -75,7 +75,7 @@ class ProductDetailScreen extends StatelessWidget {
                     );
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.deepPurple, 
+                    backgroundColor: const Color.fromARGB(255, 8, 3, 17), 
                   ),
                 ),
                 ElevatedButton.icon(

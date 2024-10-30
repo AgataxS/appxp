@@ -4,7 +4,8 @@ import 'about_us_screen.dart';
 import 'product_detail_screen.dart';
 import 'contact_form_screen.dart';
 import 'product_list_screen.dart';
-import 'customer_service_screen.dart'; 
+import 'customer_service_screen.dart';
+import 'cost_calculator_screen.dart'; 
 import '../models/product.dart';
 import '../models/category.dart';
 
@@ -16,7 +17,7 @@ class HomeScreen extends StatelessWidget {
   ];
 
   final List<Product> featuredProducts = [
-   
+    
     Product(
       name: 'iPhone 12',
       image: 'assets/images/iphone12.png',
@@ -41,11 +42,11 @@ class HomeScreen extends StatelessWidget {
         'Compatible con 5G',
       ],
     ),
-  
+
   ];
 
   final List<Category> categories = [
-
+   
     Category(
       name: 'Laptops',
       image: 'assets/images/category_laptops.png',
@@ -54,7 +55,8 @@ class HomeScreen extends StatelessWidget {
           name: 'Portátil MSI',
           image: 'assets/images/laptop1.png',
           priceUSD: 1200.0,
-          details: 'Portátil de alto rendimiento para juegos y trabajo.\n\nEspecificaciones:\n- Procesador Intel Core i7\n- 16GB RAM\n- 512GB SSD\n- Tarjeta gráfica NVIDIA RTX 3060',
+          details:
+              'Portátil de alto rendimiento para juegos y trabajo.\n\nEspecificaciones:\n- Procesador Intel Core i7\n- 16GB RAM\n- 512GB SSD\n- Tarjeta gráfica NVIDIA RTX 3060',
           features: [
             'Pantalla de 15.6 pulgadas Full HD',
             'Teclado retroiluminado RGB',
@@ -66,7 +68,8 @@ class HomeScreen extends StatelessWidget {
           name: 'Portátil Acer',
           image: 'assets/images/laptop2.png',
           priceUSD: 900.0,
-          details: 'Portátil fiable y asequible para estudiantes.\n\nEspecificaciones:\n- Procesador Intel Core i5\n- 8GB RAM\n- 256GB SSD\n- Gráficos integrados Intel UHD',
+          details:
+              'Portátil fiable y asequible para estudiantes.\n\nEspecificaciones:\n- Procesador Intel Core i5\n- 8GB RAM\n- 256GB SSD\n- Gráficos integrados Intel UHD',
           features: [
             'Batería de larga duración',
             'Diseño delgado y ligero',
@@ -78,7 +81,8 @@ class HomeScreen extends StatelessWidget {
           name: 'Portátil ASUS',
           image: 'assets/images/laptop3.png',
           priceUSD: 1100.0,
-          details: 'Portátil profesional con calidad de construcción premium.\n\nEspecificaciones:\n- Procesador AMD Ryzen 7\n- 16GB RAM\n- 1TB SSD\n- Gráficos AMD Radeon Vega',
+          details:
+              'Portátil profesional con calidad de construcción premium.\n\nEspecificaciones:\n- Procesador AMD Ryzen 7\n- 16GB RAM\n- 1TB SSD\n- Gráficos AMD Radeon Vega',
           features: [
             'Chasis de aluminio',
             'Pantalla táctil',
@@ -96,7 +100,8 @@ class HomeScreen extends StatelessWidget {
           name: 'Cámara HP',
           image: 'assets/images/camera1.png',
           priceUSD: 500.0,
-          details: 'Cámara de alta resolución para fotografía impresionante.\n\nEspecificaciones:\n- Sensor de 24MP\n- Lente 18-55mm\n- Video Full HD\n- Wi-Fi integrado',
+          details:
+              'Cámara de alta resolución para fotografía impresionante.\n\nEspecificaciones:\n- Sensor de 24MP\n- Lente 18-55mm\n- Video Full HD\n- Wi-Fi integrado',
           features: [
             'Modo automático inteligente',
             'Pantalla abatible',
@@ -108,7 +113,8 @@ class HomeScreen extends StatelessWidget {
           name: 'Cámara Canon',
           image: 'assets/images/camera2.png',
           priceUSD: 700.0,
-          details: 'Cámara versátil con excelente calidad de video.\n\nEspecificaciones:\n- Sensor de 30MP\n- Video 4K\n- Dual Pixel AF\n- Pantalla táctil',
+          details:
+              'Cámara versátil con excelente calidad de video.\n\nEspecificaciones:\n- Sensor de 30MP\n- Video 4K\n- Dual Pixel AF\n- Pantalla táctil',
           features: [
             'Conectividad Bluetooth y Wi-Fi',
             'Estabilización de imagen',
@@ -120,7 +126,8 @@ class HomeScreen extends StatelessWidget {
           name: 'Cámara Nikon',
           image: 'assets/images/camera3.png',
           priceUSD: 800.0,
-          details: 'Cámara compacta con funciones avanzadas.\n\nEspecificaciones:\n- Sensor APS-C de 20MP\n- Video 4K\n- Sistema de enfoque híbrido\n- Ranura dual para tarjetas SD',
+          details:
+              'Cámara compacta con funciones avanzadas.\n\nEspecificaciones:\n- Sensor APS-C de 20MP\n- Video 4K\n- Sistema de enfoque híbrido\n- Ranura dual para tarjetas SD',
           features: [
             'Visor electrónico OLED',
             'Cuerpo sellado contra el clima',
@@ -138,7 +145,8 @@ class HomeScreen extends StatelessWidget {
           name: 'iPhone 12',
           image: 'assets/images/iphone12.png',
           priceUSD: 1000.0,
-          details: 'El último iPhone con tecnología 5G y cámara mejorada.\n\nEspecificaciones:\n- Pantalla OLED de 6.1 pulgadas\n- Chip A14 Bionic\n- 128GB de almacenamiento\n- iOS 14',
+          details:
+              'El último iPhone con tecnología 5G y cámara mejorada.\n\nEspecificaciones:\n- Pantalla OLED de 6.1 pulgadas\n- Chip A14 Bionic\n- 128GB de almacenamiento\n- iOS 14',
           features: [
             'Doble cámara de 12MP',
             'Modo Noche y Deep Fusion',
@@ -150,7 +158,8 @@ class HomeScreen extends StatelessWidget {
           name: 'Samsung Galaxy S21',
           image: 'assets/images/galaxy_s21.png',
           priceUSD: 900.0,
-          details: 'Smartphone de alta gama con pantalla AMOLED.\n\nEspecificaciones:\n- Pantalla Dynamic AMOLED de 6.2 pulgadas\n- Exynos 2100\n- 256GB de almacenamiento\n- Android 11',
+          details:
+              'Smartphone de alta gama con pantalla AMOLED.\n\nEspecificaciones:\n- Pantalla Dynamic AMOLED de 6.2 pulgadas\n- Exynos 2100\n- 256GB de almacenamiento\n- Android 11',
           features: [
             'Compatible con 5G',
             'Triple cámara de 12MP',
@@ -162,7 +171,8 @@ class HomeScreen extends StatelessWidget {
           name: 'Huawei P40',
           image: 'assets/images/huawei_p40.jpg',
           priceUSD: 800.0,
-          details: 'Excelente cámara y rendimiento excepcional.\n\nEspecificaciones:\n- Pantalla OLED de 6.1 pulgadas\n- Kirin 990 5G\n- 128GB de almacenamiento\n- EMUI 10',
+          details:
+              'Excelente cámara y rendimiento excepcional.\n\nEspecificaciones:\n- Pantalla OLED de 6.1 pulgadas\n- Kirin 990 5G\n- 128GB de almacenamiento\n- EMUI 10',
           features: [
             'Triple cámara Leica',
             'Zoom óptico 5x',
@@ -180,7 +190,8 @@ class HomeScreen extends StatelessWidget {
           name: 'Auriculares Bluetooth',
           image: 'assets/images/headphones.jpg',
           priceUSD: 150.0,
-          details: 'Auriculares inalámbricos con cancelación de ruido.\n\nEspecificaciones:\n- Bluetooth 5.0\n- Autonomía de 30 horas\n- Asistentes de voz integrados\n- Carga rápida USB-C',
+          details:
+              'Auriculares inalámbricos con cancelación de ruido.\n\nEspecificaciones:\n- Bluetooth 5.0\n- Autonomía de 30 horas\n- Asistentes de voz integrados\n- Carga rápida USB-C',
           features: [
             'Sonido Hi-Fi',
             'Diseño plegable',
@@ -192,7 +203,8 @@ class HomeScreen extends StatelessWidget {
           name: 'Mouse Gamer',
           image: 'assets/images/mouse.jpeg',
           priceUSD: 80.0,
-          details: 'Mouse con alta precisión y luces RGB.\n\nEspecificaciones:\n- Sensor óptico de 16,000 DPI\n- 8 botones programables\n- Iluminación RGB personalizable\n- Memoria integrada',
+          details:
+              'Mouse con alta precisión y luces RGB.\n\nEspecificaciones:\n- Sensor óptico de 16,000 DPI\n- 8 botones programables\n- Iluminación RGB personalizable\n- Memoria integrada',
           features: [
             'Peso ajustable',
             'Tasa de sondeo de 1000Hz',
@@ -204,7 +216,8 @@ class HomeScreen extends StatelessWidget {
           name: 'Teclado Mecánico',
           image: 'assets/images/keyboard.jpg',
           priceUSD: 120.0,
-          details: 'Teclado mecánico con retroiluminación personalizable.\n\nEspecificaciones:\n- Switches mecánicos Blue\n- Anti-ghosting completo\n- Retroiluminación RGB por tecla\n- Reposamuñecas desmontable',
+          details:
+              'Teclado mecánico con retroiluminación personalizable.\n\nEspecificaciones:\n- Switches mecánicos Blue\n- Anti-ghosting completo\n- Retroiluminación RGB por tecla\n- Reposamuñecas desmontable',
           features: [
             'Construcción de aluminio',
             'Controles multimedia dedicados',
@@ -214,7 +227,7 @@ class HomeScreen extends StatelessWidget {
         ),
       ],
     ),
-
+   
   ];
 
   @override
@@ -266,6 +279,16 @@ class HomeScreen extends StatelessWidget {
               }).toList(),
             ),
             ListTile(
+              leading: Icon(Icons.calculate),
+              title: Text('Calculadora de Costos'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => CostCalculatorScreen()),
+                );
+              },
+            ),
+            ListTile(
               leading: Icon(Icons.info),
               title: Text('Acerca de Nosotros'),
               onTap: () {
@@ -307,7 +330,7 @@ class HomeScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
-       
+         
           CarouselSlider(
             options: CarouselOptions(
               height: 200.0,
@@ -336,7 +359,7 @@ class HomeScreen extends StatelessWidget {
             }).toList(),
           ),
           SizedBox(height: 20),
-          
+      
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: Align(
